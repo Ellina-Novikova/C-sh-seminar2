@@ -1,18 +1,23 @@
 ﻿// 2-е число кратно 1-му?
 
-Console.WriteLine("Введите первое число");
-int number1 = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите второе число");
-int number2 = Convert.ToInt32(Console.ReadLine());
-
-int Ost ()
+int EnterNumber()
 {
-   int a = number2 % number1; 
-   return a;
+    Console.WriteLine("Введите первое число");
+    int a = Convert.ToInt32(Console.ReadLine());
+    return a;
 }
-int b = Ost();
-if (b ==0)
+Void Kratno(int arg1, int arg2)
 {
-  Console.WriteLine("Второе число кратно первому");  
+    int c = arg2 % arg1;
+    if (c == 0)
+    {
+        Console.WriteLine("Второе число кратно первому");
+    }
+    else
+    {
+        Console.WriteLine("Второе число не кратно первому. Остаток от деления  " + c);
+    }
 }
-else Console.WriteLine("Второе число не кратно первому. Остаток от деления  " +b);
+int number1 = EnterNumber();
+int number2 = EnterNumber();
+Kratno(number1, number2);
