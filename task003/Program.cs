@@ -2,11 +2,11 @@
 
 int EnterNumber()
 {
-    Console.WriteLine("Введите первое число");
+    Console.WriteLine("Введите число");
     int a = Convert.ToInt32(Console.ReadLine());
     return a;
 }
-Void Kratno(int arg1, int arg2)
+void Kratno(int arg1, int arg2)
 {
     int c = arg2 % arg1;
     if (c == 0)
