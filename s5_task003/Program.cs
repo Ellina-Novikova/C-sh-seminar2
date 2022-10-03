@@ -16,7 +16,8 @@ void PrintArray(int[] array)
     }
     Console.WriteLine();
 }
-void SerchArray(int[] array, int arg)
+
+void SerchArray(int[] array, int arg)  // есть/нет совпадения
 {
     int a = 0;
     for (int i = 0; i < array.Length; i++)
@@ -29,10 +30,28 @@ void SerchArray(int[] array, int arg)
     else Console.WriteLine("Нет совпадений");
 }
 
+void SerchAllArray(int[] array, int arg) // Найти все совпадения
+{
+    int a = 0;
+    for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] == arg)
+            {
+                a = 1;
+                Console.WriteLine($"Найден элемент [{i}]");
+            }             
+        }
+    Console.WriteLine("Конец проверки");
+     if (a == 0)
+       Console.WriteLine("Нет совпадений");
+}
+
+
 Console.WriteLine("Введите количество элементов массива!");
 int[] array = new int[Convert.ToInt32(Console.ReadLine())];
 FillArray(array);
 PrintArray(array);
 Console.WriteLine("Введите число для поиска");
 int n = Convert.ToInt32(Console.ReadLine());
-SerchArray(array,n);
+//SerchArray(array,n);
+SerchAllArray(array,n);
