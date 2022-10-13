@@ -1,4 +1,6 @@
-﻿// Частотный словарь двумерного массива
+﻿//  Рекурсивный метод деления одного числа на другое без % и /.
+// Нужен остаток  и результат от деления.
+// вводим целые положительные числа
 
 int GetNumberFromConsole(string text)
 {
@@ -6,79 +8,36 @@ int GetNumberFromConsole(string text)
     return Convert.ToInt32(Console.ReadLine());
 }
 
-int GetRandomValue(int minValue, int maxValue)
-{
-    return new Random().Next(minValue, maxValue + 1);
-}
-
-void FillArray(int[,] arr, int minValue, int maxValue)
-{
-    for(int i = 0; i < arr.GetLength(0); i++)
+int RemainderOfDivision(int value, int divider)
+{    
+    if (value >= divider)
     {
-        for(int j = 0; j < arr.GetLength(1); j++)
-        {
-            arr[i,j] = GetRandomValue(minValue,maxValue);
-        }
+        value -= divider;
+        return RemainderOfDivision(value, divider);
     }
+    else      
+        return value;
 }
 
-void PrintArray(int[,] arr)
-{
-    for(int i = 0; i < arr.GetLength(0); i++)
+int[] Division(int value, int divider)
+{    
+    int[] division = new int[2];
+    int resultOfDivision = 0;
+    while (value >= divider)
     {
-        for(int j = 0; j < arr.GetLength(1); j++)
-        {
-            Console.Write(arr[i,j] + " ");
-        }
-        Console.WriteLine();
+        value -= divider;
+        resultOfDivision++;
     }
+    division[0] = resultOfDivision;
+    division[1] = RemainderOfDivision(value, divider);
+    return division;
 }
 
-int[,] InitializateArray(int m, int n)
+int m = GetNumberFromConsole("Введите делимое число");
+int n = GetNumberFromConsole("Введите число делитель");
+if (n == 0) Console.WriteLine("На 0 делить нельзя!");
+else
 {
-    return new int[m,n];
+    Console.WriteLine($"{m} / {n} = {Division(value: m, divider: n)[0]}");
+    Console.WriteLine($"Остаток от деления = {Division(value: m, divider: n)[1]}");
 }
-
-string[] SlovarArray(int[,] arr)
-{
-    string slovar = new string
-    int count = 0;
-    for(int i = 0; i < arr.GetLength(0); i++)
-    {
-        for(int j = 0; j < arr.GetLength(1); j++)
-        {
-            if (arr[i,j] == )
-        }
-        Console.WriteLine();
-    }
-}
-
-int CountDisting(int[,] arr)
-{
-    int count = 0;
-    int unicum = arr[arr.GetLength(0)-1,arr.GetLength(1)-1];
-    for(int i = 0; i < arr.GetLength(0); i++)
-    {
-        for(int j = 0; j < arr.GetLength(1); j++)
-        {
-            if (arr[i,j] != unicum)
-            {
-                count++;
-
-            }
-
-        }
-        unicum = arr[arr.GetLength(0) - 1 -- ,arr.GetLength(1) - 1 --];
-    }
-    return
-}
-
-//КОД ОСНОВНОЙ ПРОГРАММЫ
-int m = GetNumberFromConsole("Введите размерность массива m");
-int n = GetNumberFromConsole("Введите размерность массива n");
-int[,] array = InitializateArray(m,n);
-int minValue = GetNumberFromConsole("Введите минимальное число, допустимое в массиве");
-int maxValue = GetNumberFromConsole("Введите максимальное число, допустимое в массиве");
-FillArray(array,minValue,maxValue);
-
-PrintArray(array);
